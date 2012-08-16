@@ -1,25 +1,128 @@
-blankon-wallpapers (0.4) rote; urgency=low
+pysdm (0.4.1-0blankon1) rote; urgency=low
 
-  * added 17-agustus.png
+  * Initial Release.
 
- -- mijortsa <azis.astrojim@surabaya.di.blankon.in>  Thu, 16 Aug 2012 11:26:53 +0700
+ -- mijortsa <azis.astrojim@surabaya.di.blankon.in>  Thu, 16 Aug 2012 21:02:24 +0700
 
-blankon-wallpapers (0.3) rote; urgency=low
+pysdm (0.4.1-0ubuntu1) hardy; urgency=low
 
-  * Fix duplicate rote.xml.
-  * Fix duplicate name.
+  [ Cody A.W. Somerville ]
+  * New upstream release:
+    - Some GUI changes for better GNOME HIG compliance
+    - Show a dialog when not root user and close
+    - Confirmation dialog added when removing udev rule
+    - Fixed pysdm.desktop thanks to Emmet Hikory
+    - Fixed is_mountable() and get_vfstype() functions in blkid.py
+    - Fixed block.dev detection by major minor
+  * debian/compat: Bumped to level 5
+  * debian/control:
+    - Bumped standards version
+    - Moved debhelper build-dep-indep to build-dep
+    - Bumped debhelper build-dep to version 5
+    - Added build-dep-indep on python-support
+    - Added homepage field
+    - Added binary package depends on python-gtk2, and python-glade2
+  * deban/rules:
+    - Cleaned up
+    - Removed -i flags from all calls (not needed)
+    - Fixed make-clean-ignores-errors
+    - Updated to use python-support instead of dh_python
+    - Removed call to dh_installmapages
+    - Updated call to dh_installman to actually work
+  * Closes lp: #64832
 
- -- Mahyuddin <yudi.al@gmail.com>  Thu, 26 Jul 2012 02:39:43 +0700
+  [ Emmet Hikory ]
+  * Update the .desktop file patch to meet updated standards
+  * Remove spurious shebang lines
+  * Set Recommends: on gksu for .desktop file
 
-blankon-wallpapers (0.2) rote; urgency=low
+ -- Emmet Hikory <persia@ubuntu.com>  Sat, 19 Jan 2008 18:13:30 +0900
 
-  * Added contex/rote.xml
-    - Make backgrounds slideshow
+pysdm (0.4-1ubuntu3) hardy; urgency=low
 
- -- Mahyuddin <yudi.al@gmail.com>  Thu, 26 Jul 2012 00:41:22 +0700
+  * Added watch file (LP: #180390)
 
-blankon-wallpapers (0.1) rote; urgency=low
+ -- Steve Stalcup <vorian@ubuntu.com>  Fri, 04 Jan 2008 12:25:29 -0500
 
-  * Initial release
+pysdm (0.4-1ubuntu2) feisty; urgency=low
 
- -- Mahyuddin <yudi.al@gmail.com>  Fri, 13 Jul 2012 23:10:18 +0700
+  * Rebuild for python2.5 as the default python version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 12 Jan 2007 13:20:58 +0000
+
+pysdm (0.4-1ubuntu1) dapper; urgency=low
+
+  * Edited the desktop file to validate
+
+ -- Emmet Hikory <emmet.hikory@gmail.com>  Mon,  8 May 2006 11:56:07 +0900
+
+pysdm (0.4-1) breezy; urgency=low
+
+  * File systems can be removed from fstab
+  * Partitions whithout fstab entry can have udev rules now
+  * Preserve fstab comments and empty lines
+  * File systems can be unmounted now
+  * (no)diratime option added
+  * Fixed some fstab formatting bugs
+  * Fixed blkid caching problem
+  * Fixed default options
+  * Fixed XFS quota options 
+  * Fixed exception when all default options are selected
+  * Spanish l10n updated
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Sat,  3 Sep 2005 18:33:04 +0200
+
+pysdm (0.3.9.1-1) unstable; urgency=low
+
+  * udev management
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Fri,  2 Sep 2005 23:43:24 +0200
+
+pysdm (0.3.9-1) unstable; urgency=low
+
+  * udev management (unstable)
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Fri,  2 Sep 2005 17:04:48 +0200
+
+pysdm (0.3.1-1) unstable; urgency=low
+
+   * Fixed formatting of fstab
+   * Fixed mounting of new configured partitions
+   * Fixed /none bug
+   * Mount button is named "Remount" if file system is mounted
+   * Actualized spanish l10n
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Thu,  1 Sep 2005 12:21:19 +0200
+
+pysdm (0.3-1) unstable; urgency=low
+
+  * i18n and l10n support
+  * spanish l10n
+  * mount button
+  * root filesystem options configurable
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Wed, 31 Aug 2005 15:10:03 +0200
+
+pysdm (0.2.1-1) unstable; urgency=low
+
+  * User/Advanced tabbed options dialog
+  * Fixed default button bug
+  * Support for ext2, ext3, fat, vfat, msdos, ntfs, reiserfs, swap and xfs 
+    special options
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Tue, 30 Aug 2005 01:19:21 +0200
+
+pysdm (0.2-1) unstable; urgency=low
+
+  * PySDM doesn't destroy now fstab
+  * New options interface
+  * Changed install dir to /usr/share/pysdm
+
+ -- Jaime Soriano Pastor <kronoss@kronoss@kronoss.org>  Mon, 29 Aug 2005 14:43:48 +0200
+
+pysdm (0.1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Jaime Soriano Pastor <kronoss@kronoss.org>  Wed, 24 Aug 2005 14:44:40 +0200
+

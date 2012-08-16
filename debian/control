@@ -1,21 +1,19 @@
-Source: blankon-wallpapers
-Section: x11
+Source: pysdm
+Section: admin 
 Priority: optional
 Maintainer: BlankOn Developers <BlankOn@googlegroups.com>
-Build-Depends: debhelper (>= 8), cdbs (>= 0.4.90~), python (>= 2.6.6-3~)
-Build-Depends-Indep: python-distutils-extra
-Standards-Version: 3.9.3
+XSBC-Original-Maintainer: Jaime Soriano Pastor <kronoss@kronoss.org>
+Build-Depends: debhelper (>= 5)
+Build-Depends-Indep: python-support (>= 0.5.3), intltool
+Standards-Version: 3.7.3
+Homepage: http://pysdm.sourceforge.net
 
-Package: blankon-wallpapers
+Package: pysdm
 Architecture: all
-Section: metapackages
-Depends: ${misc:Depends},
-         blankon-wallpapers-rote
-Description: BlankOn Wallpapers
- The default BlankOn wallpaper. This is also a meta-package depending on the 
- other default wallpapers for the current BlankOn release.
-
-Package: blankon-wallpapers-rote
-Architecture: all
-Depends: ${misc:Depends}
-Description: BlankOn 8 Wallpapers
+Depends: ${python:Depends}, libblkid1, python-gtk2, python-glade2
+Recommends: gksu
+Description: Graphical Storage Device Manager
+ PySDM is a PyGTK Storage Device Manager that allows full customization of hard
+ disk mountpoints whitout manually access to fstab.
+ It also allows the creation of udev rules for dynamic configuration of storage
+ devices

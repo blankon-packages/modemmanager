@@ -1,9 +1,50 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
 
-DEB_PYTHON2_MODULE_PACKAGES := blankon-wallpapers
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/python-distutils.mk
+config.status: configure
+	dh_testdir
+	./configure --prefix=/usr
 
-install/blankon-wallpapers::
-	rm -r debian/tmp/usr/lib/python*
+build: build-stamp
+
+build-stamp:  config.status
+	$(MAKE)
+	dh_testdir
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp 
+	[ ! -f Makefile ] || $(MAKE) distclean
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_installdirs
+	dh_clean
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/pysdm
+
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs ChangeLog
+	dh_installdocs
+	dh_installman debian/pysdm.8
+	dh_compress
+	dh_fixperms
+	dh_pysupport
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary-arch:
+
+binary: binary-indep
+.PHONY: build clean binary-arch binary-indep install

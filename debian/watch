@@ -1,0 +1,3 @@
+version=3
+
+http://sf.net/pysdm/pysdm-([0-9].*)\.tar\.gz debian uupdate
