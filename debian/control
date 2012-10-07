@@ -1,19 +1,45 @@
-Source: pysdm
-Section: admin 
+Source: modemmanager
+Section: net
 Priority: optional
-Maintainer: BlankOn Developers <BlankOn@googlegroups.com>
-XSBC-Original-Maintainer: Jaime Soriano Pastor <kronoss@kronoss.org>
-Build-Depends: debhelper (>= 5)
-Build-Depends-Indep: python-support (>= 0.5.3), intltool
-Standards-Version: 3.7.3
-Homepage: http://pysdm.sourceforge.net
+Maintainer: Alexander Sack <asac@ubuntu.com>
+Uploaders: Alexander Sack <asac@debian.org>, Michael Biebl <biebl@debian.org>, Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>
+Build-Depends: debhelper (>= 8),
+	dh-autoreconf,
+	automake (>= 1:1.10), automake (<< 1:1.12),
+	libtool,
+	libdbus-glib-1-dev (>= 0.86),
+	libglib2.0-dev (>= 2.18),
+	libgudev-1.0-dev,
+	xsltproc,
+	intltool
+Standards-Version: 3.9.2
+Vcs-Bzr: https://code.launchpad.net/~modemmanager/modemmanager/ubuntu
 
-Package: pysdm
-Architecture: all
-Depends: ${python:Depends}, libblkid1, python-gtk2, python-glade2
-Recommends: gksu
-Description: Graphical Storage Device Manager
- PySDM is a PyGTK Storage Device Manager that allows full customization of hard
- disk mountpoints whitout manually access to fstab.
- It also allows the creation of udev rules for dynamic configuration of storage
- devices
+Package: modemmanager
+Architecture: any
+Depends: ${shlibs:Depends},
+	${misc:Depends}
+Recommends: usb-modeswitch
+Description: D-Bus service for managing modems
+ Provides a D-Bus interface to communicate with mobile broadband (GSM, CDMA,
+ UMTS, ...) cards. Implements a loadable plugin interface to add work-arounds
+ for non standard devices. Also provides patches to use networkmanager (and
+ the applet) with modem manager.
+ .
+ Git Repository: http://cgit.freedesktop.org/ModemManager/ModemManager/
+
+Package: modemmanager-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: modemmanager (= ${binary:Version}),
+	${misc:Depends}
+Description: D-Bus service for managing modems - debugging symbols
+ Provides a D-Bus interface to communicate with mobile broadband (GSM, CDMA,
+ UMTS, ...) cards. Implements a loadable plugin interface to add work-arounds
+ for non standard devices. Also provides patches to use networkmanager (and
+ the applet) with modem manager.
+ .
+ Git Repository: http://cgit.freedesktop.org/ModemManager/ModemManager/
+ .
+ This package contains debugging symbols for ModemManager.

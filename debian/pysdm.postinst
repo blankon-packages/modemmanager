@@ -1,7 +1,0 @@
-#!/bin/sh -e
-#DEBHELPER#
- 
-if [ "$1" = "configure" ]; then
-	[ -e /etc/udev/user.rules ] || touch /etc/udev/user.rules
-	[ -e /etc/udev/rules.d/z80_user.rules ] || ln -s ../user.rules /etc/udev/rules.d/z80_user.rules
-fi

@@ -1,3 +1,2 @@
 version=3
-
-http://sf.net/pysdm/pysdm-([0-9].*)\.tar\.gz debian uupdate
+http://ftp.gnome.org/pub/gnome/sources/ModemManager/([\d\.]+)/ModemManager-(.*)\.tar\.xz
