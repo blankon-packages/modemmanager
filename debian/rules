@@ -22,6 +22,7 @@ override_dh_auto_clean:
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
+		--with-tests \
 		--with-docs
 
 override_dh_makeshlibs:
@@ -31,6 +32,8 @@ override_dh_strip:
 	dh_strip --dbg-package=modemmanager-dbg
 
 override_dh_install:
+	cp $(CURDIR)/debian/77-mm-qdl-device-blacklist.rules \
+		 $(CURDIR)/debian/tmp/lib/udev/rules.d
 	if dpkg-vendor --is ubuntu; then \
 		cp $(CURDIR)/debian/ubuntu/modemmanager.upstart $(CURDIR)/debian; \
 	fi
@@ -48,7 +51,7 @@ DEB_UPSTREAM_VERSION := $(shell echo $(DEB_NOEPOCH_VERSION) | sed 's/-[^-]*$$//'
 DEB_MAJOR_VERSION := $(shell echo $(DEB_UPSTREAM_VERSION) | sed -e 's/git.*//')
 
 GIT_URL := git://anongit.freedesktop.org/ModemManager/ModemManager
-GIT_BRANCH := "MM_05"
+GIT_BRANCH := "MM_06"
 GIT_BRANCH_NAME := ModemManager
 
 ifneq (,$(LOCAL_BRANCH))
@@ -60,7 +63,7 @@ GET_SOURCE = \
 	tmpdir=`mktemp -d -t`; \
 	cd $$tmpdir; \
 		echo "cloning upstream repository ..."; \
-		git clone $(if $(LOCAL_BRANCH),$(call LOCAL_REAL_BRANCH)/$(GIT_BRANCH_NAME),$(GIT_URL)); \
+		git clone -b $(GIT_BRANCH) $(if $(LOCAL_BRANCH),$(call LOCAL_REAL_BRANCH)/$(GIT_BRANCH_NAME),$(GIT_URL)) $(GIT_BRANCH_NAME); \
 		echo "getting specific upstream revision/tag: $(1)"; \
 		cd `ls | head -n 1`; git checkout -b orig $(1); \
 		commit_id=`git log -n1 --abbrev-commit | grep '^commit ' | sed -e 's/commit //'`; \
@@ -84,12 +87,13 @@ get-current-source:: $(if $(LOCAL_BRANCH), update-local-branch)
 	$(call GET_SOURCE, $$git_version, "current")
 
 get-orig-source:: $(if $(LOCAL_BRANCH), update-local-branch)
-	$(call GET_SOURCE, $(GIT_BRANCH), "orig")
+	$(call GET_SOURCE, "HEAD", "orig")
 
 update-local-branch::
 	@echo "updating local branch: $(LOCAL_BRANCH) ..."
 	@set -e; if ! test -d $(LOCAL_BRANCH); then mkdir -p $(LOCAL_BRANCH); fi
 	@set -e; if ! test -d $(LOCAL_BRANCH)/$(GIT_BRANCH_NAME); then git clone $(GIT_URL) $(LOCAL_BRANCH)/$(GIT_BRANCH_NAME); fi
+	@set -e; cd $(LOCAL_BRANCH)/$(GIT_BRANCH_NAME); if ! `git branch | grep -q -c "$(GIT_BRANCH)"`; then git branch $(GIT_BRANCH) remotes/origin/$(GIT_BRANCH); fi
 	@set -e; cd $(LOCAL_BRANCH)/$(GIT_BRANCH_NAME); git pull -f
 	@echo "updated local branch: $(LOCAL_BRANCH)."
 

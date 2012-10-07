@@ -1,0 +1,37 @@
+From 318aaa02fa21321cd3493c7dd1ba8fa29e115064 Mon Sep 17 00:00:00 2001
+From: Aleksander Morgado <aleksander@lanedo.com>
+Date: Mon, 17 Sep 2012 10:23:05 +0000
+Subject: gsm: avoid segfault in +CLCK response parser
+
+If the returned string in the +CLCK queries doesn't include the "+CLCK:" prefix,
+more specifically the ':' character, we were feeding g_regex_match() with a
+NULL string (p == NULL). Solve the issue by using mm_strip_tag(), which will
+return the original string if the prefix is not found.
+
+Fixes https://bugs.launchpad.net/ubuntu/+source/modemmanager/+bug/1051580
+---
+diff --git a/src/mm-modem-helpers.c b/src/mm-modem-helpers.c
+index df937fb..325d8dc 100644
+--- a/src/mm-modem-helpers.c
++++ b/src/mm-modem-helpers.c
+@@ -973,15 +973,14 @@ mm_gsm_parse_clck_response (const char *reply, gboolean *enabled)
+ {
+     GRegex *r;
+     GMatchInfo *match_info;
+-    char *p, *str;
++    const gchar *p;
++    gchar *str;
+     gboolean success = FALSE;
+ 
+     g_return_val_if_fail (reply != NULL, FALSE);
+     g_return_val_if_fail (enabled != NULL, FALSE);
+ 
+-    p = strchr (reply, ':');
+-    if (p)
+-        p++;
++    p = mm_strip_tag (reply, "+CLCK:");
+ 
+     r = g_regex_new ("\\s*([01])\\s*", 0, 0, NULL);
+     if (!r)
+--
+cgit v0.9.0.2-2-gbebe

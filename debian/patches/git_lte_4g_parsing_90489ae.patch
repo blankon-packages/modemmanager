@@ -1,0 +1,23 @@
+From 90489ae1e31e31ec84dea750561d55881d382fd0 Mon Sep 17 00:00:00 2001
+From: Marius B. Kotsbak <marius@kotsbak.com>
+Date: Fri, 31 Aug 2012 10:15:14 +0000
+Subject: modem-helpers: add support for LTE/4G access technology parsing.
+
+---
+diff --git a/src/mm-modem-helpers.c b/src/mm-modem-helpers.c
+index 9a72236..a8b659d 100644
+--- a/src/mm-modem-helpers.c
++++ b/src/mm-modem-helpers.c
+@@ -976,7 +976,9 @@ mm_gsm_string_to_access_tech (const char *string)
+     /* Better technologies are listed first since modems sometimes say
+      * stuff like "GPRS/EDGE" and that should be handled as EDGE.
+      */
+-    if (strcasestr (string, "HSPA+"))
++    if (strcasestr (string, "LTE") || strcasestr (string, "4G"))
++        return MM_MODEM_GSM_ACCESS_TECH_LTE;
++    else if (strcasestr (string, "HSPA+"))
+         return MM_MODEM_GSM_ACCESS_TECH_HSPA_PLUS;
+     else if (strcasestr (string, "HSPA"))
+         return MM_MODEM_GSM_ACCESS_TECH_HSPA;
+--
+cgit v0.9.0.2-2-gbebe

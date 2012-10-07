@@ -1,5 +1,11 @@
 # patches for modemmanager
-qdl-blacklist.patch
+git_lte_4g_parsing_90489ae.patch
+git_lte_etsi_mode_0af47c7.patch
+git_better_handle_ucs2_convert_e07c216.patch
+git_skip_add_utf8_check_219424a.patch
+git_lp1015328_segfault_in_clck_parser_318aaa0.patch
+git_move_cind_process_func_1dee45e.patch
+git_fall_back_to_csq_cind_8bd6903.patch
 lp700316_usb_blacklist.patch
 arduino-blacklist.patch
-dbus_remove_max_replies_per_connection_limit.patch
+ericsson_h5321gw_usbids.patch
