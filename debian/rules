@@ -19,8 +19,8 @@ override_dh_auto_clean:
 	dh_auto_clean
 
 override_dh_auto_configure:
-	dh_auto_configure -- \
-		--with-tests \
+	dh_auto_configure 
+	#	--with-tests \
                 #--enable-gtk-doc
 
 override_dh_makeshlibs:
