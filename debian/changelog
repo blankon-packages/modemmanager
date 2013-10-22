@@ -1,8 +1,9 @@
 modemmanager (0.7.991-1blankon1) suroboyo; urgency=low
 
   * Upload for gnome-conttrol-center 
+  * debian/rules drop enable-gtk-doc
 
- -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 22 Oct 2013 09:25:29 +0700
+ -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 22 Oct 2013 09:41:33 +0700
 
 modemmanager (0.7.991-1) experimental; urgency=low
 
