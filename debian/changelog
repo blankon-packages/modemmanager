@@ -1,3 +1,41 @@
+modemmanager (1.0.0-2blankon1) tambora; urgency=low
+
+  * New upstream release.
+
+ -- Aris Febrianto <ariesfebrianto@gmail.com>  Sun, 23 Mar 2014 22:39:42 +0700
+
+modemmanager (1.0.0-2) experimental; urgency=medium
+
+  * Sync more changes from Ubuntu:
+    - changelog for 0.6.0.0.really-0ubuntu4 (all changes dropped, they are
+      patches included in the current upstream version).
+    - changelog for 0.6.0.0.really-0ubuntu5 (all changes dropped, they are
+      patches included in the current upstream version).
+    - changelog for 0.6.0.0.really-0ubuntu6.
+    - Build-Depend on automake1.11.
+    - changelog for 0.6.0.0.really-0ubuntu7.
+    - lp1229748_bluegiga_blacklist.patch: don't reset BLED112B.
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Tue, 14 Jan 2014 10:02:26 -0500
+
+modemmanager (1.0.0-1) experimental; urgency=low
+
+  * New upstream release. (Closes: #728214, #728215)
+  * debian/control: add a versioned dependency for libqmi -- we need at least
+    version 1.4.
+  * debian/control: build-depends on libmbim-glib-dev 1.4
+  * debian/rules: run the local autogen.sh rather than gnome-autogen.sh.
+  * debian/rules: drop --with-tests. 
+  * debian/rules: clean up after gtk-doc files left around.
+  * debian/patches/glib_fixes.patch: link against glib explicitly for the
+    huawei modem helper tests.
+  * debian/libmm-glib0.symbols: updated symbols: Contacts interface that was
+    in 0.7.990 got dropped; it's not actually implemented, so upstream avoids
+    exposing it.
+  * debian/watch: update watch file for new location of upstream source.
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Fri, 20 Dec 2013 15:35:26 -0500
+
 modemmanager (0.7.991-1blankon1) suroboyo; urgency=low
 
   * Upload for gnome-conttrol-center 
