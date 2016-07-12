@@ -1,8 +1,155 @@
-modemmanager (1.0.0-2blankon1) tambora; urgency=low
+modemmanager (1.5.993-1blankon1) tambora; urgency=medium
+
+  * New upstrean release
+
+ -- Syai Mif <syaimif@localhost>  Tue, 12 Jul 2016 07:31:35 +0700
+
+modemmanager (1.5.993-1) unstable; urgency=medium
+
+  * New upstream release (1.6-rc4).
+  * Update Build-Depends as per configure.ac.
+  * Install bash-completion file for mmcli.
+  * Update symbols file.
+  * Enable suspend/resume support. Requires libsystemd.
+  * Bump Standards-Version to 3.9.8.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 08 Jul 2016 02:19:24 +0200
+
+modemmanager (1.4.14-1) unstable; urgency=medium
+
+  [ Laurent Bigonville ]
+  * New upstream release.
+  * debian/control: Fix capitalisation of Bluetooth (Closes: #754439)
+  * Remove modemmanager-dbg package and rely on automatic dbgsym package
+  * debian/control: Fix Vcs-Git URL (again) to please lintian
+  * debian/control: Bump Standards-Version to 3.9.7 (no further changes)
+
+  [ Michael Biebl ]
+  * Remove outdated debian/README.source.
+  * Use https:// for upstream homepage.
+  * Bump Build-Depends on debhelper for dh_strip --dbgsym-migration support.
+  * Drop Ubuntu specific upstart job now that Ubuntu has switched to systemd as
+    well. (Closes: #804054)
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 23 Mar 2016 21:30:46 +0100
+
+modemmanager (1.4.12-1) unstable; urgency=medium
 
   * New upstream release.
 
- -- Aris Febrianto <ariesfebrianto@gmail.com>  Sun, 23 Mar 2014 22:39:42 +0700
+ -- Michael Biebl <biebl@debian.org>  Thu, 08 Oct 2015 12:47:56 +0200
+
+modemmanager (1.4.10-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Blacklist: ignore devices from Posnet Polska S.A. (Closes: #791341)
+
+ -- Michael Biebl <biebl@debian.org>  Sun, 26 Jul 2015 20:43:23 +0200
+
+modemmanager (1.4.8-1) unstable; urgency=medium
+
+  * Upload to unstable.
+  * New upstream release.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 08 May 2015 01:44:53 +0200
+
+modemmanager (1.4.4-1) experimental; urgency=medium
+
+  * Imported Upstream version 1.4.4.
+  * Bump Build-Depends on libqmi-glib-dev to (>= 1.12.4).
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 13 Feb 2015 10:28:55 +0100
+
+modemmanager (1.4.2-1) experimental; urgency=medium
+
+  [ Marius B. Kotsbak ]
+  * Imported Upstream version 1.4.2.
+  * Removed all patches applied upstream.
+  * Update to latest Standards-Version 3.9.6.
+
+  [ Michael Biebl ]
+  * Set debian-branch to experimental in gbp.conf.
+  * Update Vcs-Browser to use cgit and https.
+  * Install typelib files into multiarch paths now that gobject-introspection
+    supports that.
+  * Mark dev and gir packages as Multi-Arch: same.
+
+ -- Michael Biebl <biebl@debian.org>  Mon, 09 Feb 2015 00:29:46 +0100
+
+modemmanager (1.4.0-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fixes conflicting definitions of mm_manager_new. (Closes: #749387)
+  * Refresh patches.
+  * Bump Build-Depends on libmbim-glib-dev to (>= 1.10).
+  * Install NEWS file which includes the relevant upstream changes.
+    (Closes: #641467)
+  * Update symbols file for libmm-glib0.
+  * Add Build-Depends on dbus, required to run the test suite.
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 17 Sep 2014 08:46:25 +0200
+
+modemmanager (1.2.0-1) unstable; urgency=medium
+
+  [ Guido Günther ]
+  * New upstream version 1.2.0 (Closes: #731851)
+  * Update patches
+  * Install locale files
+  * Require newer libqmi
+  * Update symbols file
+  * Ship gobject introspection data
+  * Ship vala bindings
+
+  [ Michael Biebl ]
+  * Use canonical URI for Vcs-Git
+  * Use gir dh addon
+  * Update extendend package description (Closes: #744180)
+
+ -- Michael Biebl <biebl@debian.org>  Wed, 25 Jun 2014 02:23:09 +0200
+
+modemmanager (1.0.0-5) unstable; urgency=medium
+
+  [ Michael Biebl ]
+  * Fix typo in package description (Closes: #745140)
+
+  [ Martin Pitt ]
+  * libmm-glib: Initialize result array
+  * Add systemd unit link to shadow upstart job (LP: #1314795)
+  * Fix systemd/upstart job on upgrades on Ubuntu
+  * Avoid cancelling of systemd unit stop on remove (Closes: #745621)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 03 Jun 2014 09:15:24 +0200
+
+modemmanager (1.0.0-4) unstable; urgency=medium
+
+  * Kill old modem-manager process when upgrading from pre 1.0.0 versions.
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 29 Mar 2014 00:46:03 +0100
+
+modemmanager (1.0.0-3) unstable; urgency=medium
+
+  [ Michael Biebl ]
+  * Upload to unstable.
+  * Refresh patches to apply cleanly.
+
+  [ Guido Günther ]
+  * Update VCS- URLs
+  * Add homepage URL
+  * Enable PolicyKit support (Closes: #736475, #736900)
+
+  [ Michael Biebl ]
+  * Update Standards Version to 3.9.5
+  * Drop link to Git repository from package descriptions
+  * Build-Depend on the latest automake version
+  * Fix D-Bus service file generation (Closes: #733752)
+  * Add gbp.conf and enable pristine-tar
+  * Install systemd service file
+  * Use dh-systemd to enable the systemd service and restart it on upgrades
+  * Set pkg-utopia-maintainers@lists.alioth.debian.org as Maintainer
+  * Remove obsolete D-Bus policy conffile on upgrades (Closes: #733305)
+  * Update debian/copyright using machine-readable copyright format 1.0
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 27 Mar 2014 15:46:44 +0100
 
 modemmanager (1.0.0-2) experimental; urgency=medium
 
@@ -35,13 +182,6 @@ modemmanager (1.0.0-1) experimental; urgency=low
   * debian/watch: update watch file for new location of upstream source.
 
  -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Fri, 20 Dec 2013 15:35:26 -0500
-
-modemmanager (0.7.991-1blankon1) suroboyo; urgency=low
-
-  * Upload for gnome-conttrol-center 
-  * debian/rules drop enable-gtk-doc
-
- -- Rahman Yusri Aftian <aftian@di.blankon.in>  Tue, 22 Oct 2013 09:41:33 +0700
 
 modemmanager (0.7.991-1) experimental; urgency=low
 
@@ -106,6 +246,47 @@ modemmanager (0.7.991-1) experimental; urgency=low
   * Update standards version to current 3.9.4.
 
  -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Tue, 11 Jun 2013 10:35:42 -0400
+
+modemmanager (0.6.0.0.really-0ubuntu7) saucy; urgency=low
+
+  * debian/patches/lp1229748_bluegiga_blacklist.patch: don't reset BLED112B.
+    (LP: #1229748)
+
+ -- Alan Bell <alanbell@ubuntu.com>  Tue, 24 Sep 2013 15:39:47 +0100
+
+modemmanager (0.6.0.0.really-0ubuntu6) saucy; urgency=low
+
+  * Build-depend on automake1.11.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 24 Sep 2013 14:57:53 +0200
+
+modemmanager (0.6.0.0.really-0ubuntu5) raring; urgency=low
+
+  * debian/patches/lp1164023_try_csq_if_cind_fails_5d854a3.patch: fallback to
+    trying AT+CSQ if AT+CIND fails. (LP: #1164023)
+  * debian/patches/git_udev_match_both_vid_pid_e322ccf.patch: match both VID
+    and PID when matching devices: If the rules to tag specific USB interface
+    numbers only apply on the PID, we'll end up seeing that if the port has a
+    parent with another PID, and that other PID also has a rule, port will get
+    tagged multiple times.
+  * debian/patches/git_mbm_remove_check_poll_when_conn_1652019.patch: mbm:
+    remove connection attempt check poll explicitly when connected: Completing
+    a MMCallbackInfo is done asynchronously (in an idle), which means that we
+    may get the poll timeout called in between...
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Wed, 10 Apr 2013 21:20:53 -0400
+
+modemmanager (0.6.0.0.really-0ubuntu4) raring; urgency=low
+
+  * debian/patches/git_cdma_double_free_05a4226.patch: cdma: avoid double free
+    of GError (LP: #1083659)
+  * debian/patches/git_ignore_arduino_aa84ce9.patch: properly ignore more
+    arduino devices. (LP: #1153632)
+  * debian/patches/git_ignore_west_mountain_radios_e608b17.patch: ignore West
+    Mountain amateur radio systems. (LP: #1154654)
+  * debian/patches/lp700316_usb_blacklist.patch: refreshed.
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Mon, 01 Apr 2013 11:07:37 -0400
 
 modemmanager (0.6.0.0.really-0ubuntu3) raring; urgency=low
 
